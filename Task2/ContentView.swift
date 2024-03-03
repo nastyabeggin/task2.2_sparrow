@@ -1,5 +1,12 @@
 import SwiftUI
 
+// custom modifier that disables preventing widowed lines
+public extension String {
+    var fixWidow: String {
+        self + "\u{200B}\u{200B}\u{200B}\u{200B}"
+    }
+}
+
 struct ContentView: View {
     @State var containerWidth = 150.0;
     
@@ -10,7 +17,7 @@ struct ContentView: View {
                 Text("Марафон ")
                     .fontWeight(.thin)
                     .foregroundStyle(.secondary)
-                + Text("по SwiftUI")
+                + Text("по SwiftUI".fixWidow)
                     .bold()
                 Text("«Отцовский Пинок»")
                     .font(.title)
